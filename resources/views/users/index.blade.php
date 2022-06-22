@@ -18,7 +18,11 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->phone_number }}</td>
                         <td>{{ $user->email }}</td>
-                        <td>{{ $user->status }}</td>
+                        <td>
+                            <button class="btn btn-{{ $user->status ? 'outline-success' : 'outline-danger' }}">
+                                {{ $user->status ? 'Activo' : 'Inactivo' }}
+                            </button>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>

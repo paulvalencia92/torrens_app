@@ -12,6 +12,11 @@ class User extends Authenticatable
     const USER = 'user';
     const ADMIN = 'admin';
 
+    protected $casts = [
+        'status' => 'boolean',
+        'email_verified_at' => 'datetime',
+    ];
+
 
     use Notifiable;
 
@@ -37,14 +42,6 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
 
     public static function rolesType()
     {
