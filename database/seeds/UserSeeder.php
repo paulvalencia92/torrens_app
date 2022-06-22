@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
             'phone_number' => '3188308972',
             'status' => true,
             'role' => User::ADMIN,
-            'password' => bcrypt('password'),
+            'password' => bcrypt('Passw0rd'),
         ]);
 
         factory(User::class)->times(10)->create();
