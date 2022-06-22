@@ -94,7 +94,7 @@
                         </a>
                     </li>
                     <li class="navigation-list-item">
-                        <a class="navigation-link" href="/">
+                        <a class="navigation-link" href="{{ route('users.index') }}">
                             <div class="row">
                                 <div class="col-2">
                                     <i class="fas fa-users"></i>
@@ -144,11 +144,12 @@
                 <i class="fas fa-bars"></i>
             </button>
         </div>
+        <main class="py-5 d-flex justify-content-center">
+            @yield('content')
+        </main>
     </div>
 
-    <main class="py-5 d-flex justify-content-center">
-        @yield('content')
-    </main>
+
 
 </div>
 
