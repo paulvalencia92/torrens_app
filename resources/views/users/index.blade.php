@@ -9,12 +9,13 @@
 
             @component('components.alert-component')@endcomponent
 
+            @admin
             <div class="col-md-12 text-end mb-4">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formUserModal">
                     Crear usuario
                 </button>
             </div>
-
+            @endadmin
 
             @include('users.form')
 

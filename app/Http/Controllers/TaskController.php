@@ -11,7 +11,7 @@ class TaskController extends Controller
     public function index()
     {
         $admin = auth()->user()->isAdmin();
-
+        
         $tasks = Task::query()
             ->when(!$admin, fn($query) => $query->fromUser())
             ->get();
