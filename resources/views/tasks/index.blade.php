@@ -7,7 +7,15 @@
         <hr>
         <div class="row justify-content-center">
 
-            <table class="table table-striped table-hover table-bordered">
+            <div class="col-md-12 text-end mb-4">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formTaskModal">
+                    Crear tarea
+                </button>
+            </div>
+
+            @include('tasks.form')
+
+            <table class="table table-striped table-hover table-bordered col-12">
                 <thead>
                 <tr>
                     <th scope="col">Titulo</th>
@@ -31,5 +39,15 @@
     </div>
 
 @endsection
+
+
+@push("js")
+    <script>
+        @if (count($errors) > 0)
+        const myModal = new bootstrap.Modal(document.getElementById('formTaskModal'))
+        myModal.show()
+        @endif
+    </script>
+@endpush
 
 

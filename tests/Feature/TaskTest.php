@@ -48,4 +48,26 @@ class TaskTest extends TestCase
     }
 
 
+    /** @test */
+    function it_creates_a_new_task()
+    {
+        $this->withoutExceptionHandling();
+        $user = factory(User::class)->create();
+
+        $this->actingAs($user)
+            ->post('/tasks', [
+                'title' => 'Laravel1',
+                'description' => 'Ser el mejor',
+                'user_id' => $user->id
+            ])->assertRedirect('tasks');
+
+        $this->assertDatabaseHas('tasks', [
+            'title' => 'Laravel1',
+            'description' => 'Ser el mejor',
+            'user_id' => $user->id
+        ]);
+
+    }
+
+
 }

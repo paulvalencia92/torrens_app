@@ -22,6 +22,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => ['auth']], function () {
 
     Route::view('/', 'welcome');
+
+    /**=================================
+     *    Users
+     *================================**/
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
     Route::post('/users', [UserController::class, 'store'])->name('users.store');
 
@@ -29,5 +33,6 @@ Route::group(['middleware' => ['auth']], function () {
      *    Tasks
      *================================**/
     Route::get('/tasks', [TaskController::class, 'index'])->name('tasks.index');
+    Route::post('/tasks', [TaskController::class, 'store'])->name('tasks.store');
 
 });

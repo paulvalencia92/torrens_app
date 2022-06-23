@@ -11,7 +11,7 @@
 
                     <div class="mb-3">
                         <label for="name" class="form-label">{{ __('Nombre') }}</label>
-                        <input type="name"
+                        <input type="text"
                                name="name"
                                required autocomplete="name" autofocus
                                class="form-control @error('name') is-invalid @enderror"
