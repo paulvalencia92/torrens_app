@@ -1,5 +1,6 @@
 <?php
 
+use App\Task;
 use App\User;
 use Illuminate\Database\Seeder;
 
@@ -21,6 +22,10 @@ class UserSeeder extends Seeder
             'password' => bcrypt('Passw0rd'),
         ]);
 
-        factory(User::class)->times(10)->create();
+        factory(User::class)->times(10)->create()->each(function ($user) {
+            factory(Task::class)->create([
+                'user_id' => $user->id
+            ]);
+        });
     }
 }

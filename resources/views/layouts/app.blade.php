@@ -6,7 +6,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- Styles -->
-{{--        <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
+    {{--        <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <title>Hello, world!</title>
     <!-- Font Awesome -->
@@ -107,7 +107,7 @@
                         </a>
                     </li>
                     <li class="navigation-list-item">
-                        <a class="navigation-link" href="/">
+                        <a class="navigation-link" href="{{ route('tasks.index') }}">
                             <div class="row">
                                 <div class="col-2">
                                     <i class="fas fa-comments"></i>
@@ -149,7 +149,6 @@
             @yield('content')
         </main>
     </div>
-
 
 
 </div>
