@@ -31,9 +31,7 @@
     </script>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <style>
-
-    </style>
+    @stack('css')
 </head>
 <body>
 
@@ -163,6 +161,22 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
 </script>
+<script defer src="/js/jConfirm.js"></script>
+<script>
+    jQuery(document).ready(function () {
+        $.jConfirm.defaults.question = '{{ __("¿Estás seguro?") }}';
+        $.jConfirm.defaults.confirm_text = '{{ __("Sí") }}';
+        $.jConfirm.defaults.deny_text = '{{ __("No") }}';
+        $.jConfirm.defaults.position = 'top';
+        $.jConfirm.defaults.theme = 'black';
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    });
+</script>
+<script src="/js/functions.js"></script>
 @stack('js')
 </body>
 </html>

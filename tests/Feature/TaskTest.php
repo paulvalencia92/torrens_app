@@ -10,6 +10,8 @@ use Tests\TestCase;
 
 class TaskTest extends TestCase
 {
+    use RefreshDatabase;
+
     /** @test */
     function admin_can_see_all_tasks()
     {
@@ -89,6 +91,21 @@ class TaskTest extends TestCase
             'title' => 'Nuevo titulo',
             'description' => 'Nueva descripcion',
         ]);
+
+    }
+
+
+    /** @test */
+    function it_completely_deletes_a_task()
+    {
+        $this->markTestIncomplete();
+
+        $user = factory(User::class)->create();
+        $task = factory(Task::class)->create(['user_id' => $user->id]);
+
+        $this->actingAs($user)
+            ->delete("tasks/{$task->id}")
+            ->assertRedirect('tasks');
 
     }
 

@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
+@push('css')
+    <link rel="stylesheet" href="/css/jConfirm.css"/>
+@endpush
+
 @section('content')
+
     <div class="container">
 
         <h2>Lista de tareas</h2>
@@ -34,6 +39,10 @@
                             <a href="{{ route('tasks.edit',$task) }}"
                                class="btn btn-outline-info">
                                 Editar
+                            </a>
+                            <a class="btn btn-outline-danger delete-record"
+                               data-route="{{ route("tasks.destroy", $task) }}" href="#">
+                                {{ __("Eliminar") }}
                             </a>
                         </td>
                     </tr>

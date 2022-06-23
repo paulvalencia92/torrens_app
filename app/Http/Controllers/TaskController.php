@@ -45,4 +45,19 @@ class TaskController extends Controller
 
     }
 
+    public function destroy(Task $task)
+    {
+        try {
+            if (request()->ajax()) {
+                $task->delete();
+                return redirect()->route('tasks.index');
+            } else {
+                abort(401);
+            }
+        } catch (\Exception $exception) {
+            session()->flash("message", ["danger", $exception->getMessage()]);
+        }
+
+    }
+
 }
