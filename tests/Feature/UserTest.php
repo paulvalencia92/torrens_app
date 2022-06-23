@@ -35,4 +35,24 @@ class UserTest extends TestCase
             ->assertRedirect('login');
     }
 
+
+    /** @test */
+    function it_creates_a_new_user()
+    {
+        $this->withoutExceptionHandling();
+        $user = factory(User::class)->create();
+
+        $this->actingAs($user)
+            ->post('/users', [
+                'name' => 'Carlos',
+                'email' => 'carlos@gmail.com',
+                'password' => 'Passw0rd',
+                'password_confirmation' => 'Passw0rd',
+                'phone_number' => '3188308972',
+                'role' => User::USER,
+                'status' => '1',
+            ])->assertRedirect('users');
+        
+    }
+
 }

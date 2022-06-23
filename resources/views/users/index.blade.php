@@ -2,7 +2,21 @@
 
 @section('content')
     <div class="container">
+
+        <h2>Lista de usuarios</h2>
+        <hr>
         <div class="row justify-content-center">
+
+            <div class="col-md-12 text-end mb-4">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formUserModal">
+                    Crear usuario
+                </button>
+            </div>
+
+
+            @include('users.form')
+
+
             <table class="table table-striped table-hover table-bordered">
                 <thead>
                 <tr>
@@ -31,3 +45,12 @@
     </div>
 
 @endsection
+
+@push("js")
+    <script>
+        @if (count($errors) > 0)
+        const myModal = new bootstrap.Modal(document.getElementById('formUserModal'))
+        myModal.show()
+        @endif
+    </script>
+@endpush
