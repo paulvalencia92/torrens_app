@@ -60,7 +60,8 @@ class RegisterController extends Controller
                     'confirmed',
                     'regex:/[A-Z]/',
                     'regex:/[0-9]/'
-                ]
+                ],
+                'phone_number' => ['required'],
             ],
             [
                 'password.regex' => 'Password must contain at least one capital letter',
@@ -80,6 +81,9 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'status' => true,
+            'phone_number' => $data['phone_number'],
+            'role' => User::ADMIN,
         ]);
     }
 }
