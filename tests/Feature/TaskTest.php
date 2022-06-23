@@ -32,6 +32,20 @@ class TaskTest extends TestCase
     }
 
 
+    /** @test */
+    function non_administrator_users_cannot_see_all_tasks()
+    {
+        $user = factory(User::class)->create(['role' => User::USER]);
+        $anotherUser = factory(User::class)->create(['role' => User::USER]);
+        $task1 = factory(Task::class)->create(['user_id' => $user->id]);
+        $task2 = factory(Task::class)->create(['user_id' => $anotherUser->id]);
 
-    
+        $this->actingAs($user)
+            ->get('/tasks')
+            ->assertViewHas('tasks', function ($tasks) use ($task1, $task2) {
+                return $tasks->contains($task1) && !$tasks->contains($task2);
+            });
+    }
+
+
 }
