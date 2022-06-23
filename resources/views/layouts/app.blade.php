@@ -7,7 +7,6 @@
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- Styles -->
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
-    <title>Hello, world!</title>
     <!-- Font Awesome -->
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -121,7 +120,7 @@
                                                      document.getElementById('logout-form').submit();">
                             <div class="row">
                                 <div class="col-2">
-                                    <i class="fas fa-comments"></i>
+                                    <i class="fas fa-times-circle"></i>
                                 </div>
                                 <div class="col-9">
                                     {{ __('Logout') }}

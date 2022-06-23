@@ -7,6 +7,8 @@
         <hr>
         <div class="row justify-content-center">
 
+            @component('components.alert-component')@endcomponent
+
             <div class="col-md-12 text-end mb-4">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formUserModal">
                     Crear usuario

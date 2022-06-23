@@ -27,6 +27,7 @@ class TaskController extends Controller
             'description' => $request->description,
             'user_id' => auth()->id()
         ]);
+        session()->flash("message", ["success", __("Tarea creada satisfactoriamente")]);
         return redirect()->route('tasks.index');
     }
 
@@ -41,6 +42,7 @@ class TaskController extends Controller
         $task->title = $request->title;
         $task->description = $request->description;
         $task->update();
+        session()->flash("message", ["success", __("Tarea actualizada satisfactoriamente")]);
         return redirect()->route('tasks.index');
 
     }
@@ -50,6 +52,7 @@ class TaskController extends Controller
         try {
             if (request()->ajax()) {
                 $task->delete();
+                session()->flash("message", ["success", __("Tarea eliminada satisfactoriamente")]);
                 return redirect()->route('tasks.index');
             } else {
                 abort(401);
