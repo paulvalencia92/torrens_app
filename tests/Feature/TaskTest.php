@@ -70,4 +70,27 @@ class TaskTest extends TestCase
     }
 
 
+    /** @test */
+    function it_update_a_tasks()
+    {
+        $user = factory(User::class)->create();
+        $task = factory(Task::class)->create(['user_id' => $user->id]);
+
+
+        $this->actingAs($user)
+            ->put("/tasks/{$task->id}", [
+                'title' => 'Nuevo titulo',
+                'description' => 'Nueva descripcion',
+            ])->assertRedirect("/tasks");
+
+
+        $this->assertDatabaseHas('tasks', [
+            'user_id' => $user->id,
+            'title' => 'Nuevo titulo',
+            'description' => 'Nueva descripcion',
+        ]);
+
+    }
+
+
 }

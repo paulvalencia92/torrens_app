@@ -30,7 +30,12 @@
                         <td>{{ $task->title }}</td>
                         <td>{{ $task->description }}</td>
                         <td>{{ $task->user->name }}</td>
-                        <td></td>
+                        <td>
+                            <a href="{{ route('tasks.edit',$task) }}"
+                               class="btn btn-outline-info">
+                                Editar
+                            </a>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>
