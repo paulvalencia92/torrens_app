@@ -6,7 +6,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- Styles -->
-    {{--        <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <title>Hello, world!</title>
     <!-- Font Awesome -->
@@ -40,7 +39,7 @@
         <div class="sidebar-header">
             <div class="sidebar-logo-container">
                 <div class="logo-container">
-                    <img class="logo-sidebar" src="assets/img/logo.png"/>
+                    <img class="logo-sidebar" src="img/torrens-university-australia-logo.svg"/>
                 </div>
                 <div class="brand-name-container">
                     <p class="brand-name">
@@ -59,7 +58,7 @@
                         <a class="navigation-link" href="{{ route('login') }}">
                             <div class="row">
                                 <div class="col-2">
-                                    <i class="fas fa-comments"></i>
+                                    <i class="fas fa-sign-in-alt"></i>
                                 </div>
                                 <div class="col-9">
                                     Login
@@ -71,7 +70,7 @@
                         <a class="navigation-link" href="{{ route('register') }}">
                             <div class="row">
                                 <div class="col-2">
-                                    <i class="fas fa-comments"></i>
+                                    <i class="fas fa-user-plus"></i>
                                 </div>
                                 <div class="col-9">
                                     Registro
@@ -84,7 +83,7 @@
                         <a class="navigation-link" href="/">
                             <div class="row">
                                 <div class="col-2">
-                                    <i class="fas fa-tachometer-alt"></i>
+                                    <i class="fas fa-home"></i>
                                 </div>
                                 <div class="col-9">
                                     Home
@@ -108,7 +107,7 @@
                         <a class="navigation-link" href="{{ route('tasks.index') }}">
                             <div class="row">
                                 <div class="col-2">
-                                    <i class="fas fa-comments"></i>
+                                    <i class="fas fa-tasks"></i>
                                 </div>
                                 <div class="col-9">
                                     Tasks
@@ -136,14 +135,28 @@
                 @endguest
             </ul>
         </div>
+        <div class="d-flex align-items-center justify-content-center mt-5">
+            <img  class="logo-sidebar-2" src="img/torrens-university-australia-logo.svg"/>
+        </div>
     </div>
     <div class="content">
         <div class="navigationBar">
             <button id="sidebarToggle" class="btn sidebarToggle">
                 <i class="fas fa-bars"></i>
             </button>
+            @auth
+                <ul class="flex-grow-1 d-flex justify-content-end navigation-list-h">
+                    <li class="me-2">
+                        <i class="fas fa-bell"></i>
+                        <span>({{ auth()->user()->countTask() }})</span>
+                    </li>
+                    <li>
+                        <a class="navigation-link-h " href="">{{ auth()->user()->name }}</a>
+                    </li>
+                </ul>
+            @endauth
         </div>
-        <main class="py-5 d-flex justify-content-center">
+        <main class="p-5 d-flex justify-content-center">
             @yield('content')
         </main>
     </div>

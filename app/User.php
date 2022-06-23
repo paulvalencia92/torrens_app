@@ -50,6 +50,16 @@ class User extends Authenticatable
         return $this->role === self::ADMIN;
     }
 
+    public function countTask()
+    {
+        return $this->tasks->count();
+    }
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
+
 
     public static function rolesType()
     {
